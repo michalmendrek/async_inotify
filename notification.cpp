@@ -38,7 +38,8 @@ void notify::handler(int sig) {
       if (event->len > 0) {
         for (auto it : File) {
           if (event->name == std::get<0>(it)) {
-            std::get<1>(it)();
+            if(std::get<1>(it)!=nullptr){
+            std::get<1>(it)();}
             std::cout << event->name << std::endl;
           }
         }

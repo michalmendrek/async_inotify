@@ -31,7 +31,7 @@ class notify {
  public:
   notify(std::string LogDir);
   ~notify();
-  void AddFileName(std::string FileName, std::function<void()> func);
+  void AddFileName(std::string FileName, std::function<void()> func=nullptr);
 };
 
 #endif

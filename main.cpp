@@ -28,7 +28,7 @@ int main()
 
 notify plik("./");
 plik.AddFileName("plik.log",funkcja1);
-plik.AddFileName("plik1.log",funkcja2);
+plik.AddFileName("plik1.log");
 
 while(1)
 {
