@@ -12,12 +12,23 @@
 using namespace std;
 
 
+void funkcja1()
+{
+  std::cout <<"Funkcja jeden" << std::endl;
+}
+
+void funkcja2()
+{
+  std::cout <<"Funkcja dwa" << std::endl;
+}
+
+
 int main()
 {
 
 notify plik("./");
-plik.AddFileName("plik.log");
-plik.AddFileName("plik1.log");
+plik.AddFileName("plik.log",funkcja1);
+plik.AddFileName("plik1.log",funkcja2);
 
 while(1)
 {

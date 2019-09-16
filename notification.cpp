@@ -55,8 +55,15 @@ void notify::handler(int sig)
    if(event->len >0){
    for(auto it:File)
    {
-    if(it == event->name) {std::cout << event->name << std::endl;}
-   }}
+    if(event->name  == std::get<0>(it))
+    {
+      //auto ptr = 
+      std::get<1>(it)();
+      //ptr();
+     std::cout << event->name << std::endl;
+    }
+   }
+   }
    p+= sizeof(struct inotify_event) + event->len;
   }
   }
@@ -65,7 +72,7 @@ void notify::handler(int sig)
 }
 
 
-void notify::AddFileName(std::string FileName)
+void notify::AddFileName(std::string FileName, std::function<void()> func)
 {
- File.push_back(FileName);
+ File.push_back(std::make_tuple(FileName,func));
 }

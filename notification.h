@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <sys/inotify.h>
 #include <vector>
-
+#include <tuple>
 
 #define BUF_LEN (10 * (sizeof (struct inotify_event) + NAME_MAX +1))
 
@@ -19,7 +19,7 @@ class notify
 
 private:
 
-  std::vector<std::string> File;
+  std::vector<std::tuple<std::string, std::function<void()>>> File;
 
   int inotifyFD;
   int inotifyWD;
@@ -33,7 +33,7 @@ private:
 public:
   notify(std::string LogDir);
  ~notify();
-  void AddFileName(std::string FileName);
+  void AddFileName(std::string FileName, std::function<void()> func);
 
 
 };
